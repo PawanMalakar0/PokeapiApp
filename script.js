@@ -1,4 +1,5 @@
-const pokemonSearch = document.getElementById("pokemonSearch");
+
+console.log(1)const pokemonSearch = document.getElementById("pokemonSearch");
 const SearchBtn = document.getElementById("btn");
 const PokeCart = document.getElementById('pokeInsert');
 const categoryBtns = document.getElementById('categoryBtns');
