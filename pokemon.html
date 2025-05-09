@@ -1,12 +1,60 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>temp</title>
-</head>
-<body>
-    
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Poke-Api App</title>
+    <link rel="stylesheet" href="PokeIdStyle.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <span class="title">
+        <img
+          src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png"
+          alt="pokeApi"
+        />
+      </span>
+      <span class="pokemonSearch" >
+        <input type="text" id="pokemonSearch"  placeholder="search pokemon here.." />
+        <button id="PokeSearch-btn" class="PokeSearch-btn">search here</button>
+      </span>
+    </nav>
+    <div class="container">
+      <section class="pokeDetails">
+        <div class="titleBox"
+          ><h3>Name</h3>
+          <span id="Name"></span>
+        </div>
+        <div class="experience">
+          <h3>Experience</h3>
+          <span id="Experience"></span>
+        </div>
+        <div class="weight">
+          <h3>weight</h3>
+          <span id="weight"></span>
+        </div>
+        <div class="height">
+          <h3>height</h3>
+          <span id="height"></span>
+          
+        </div>
+        <div class="pokeId"
+          ><h3>#Id</h3>
+          <span id="pokeId"></span></div
+        >
+        <div class="moves"><h3>Moves</h3> <select name="" id="moves" aria-readonly="true">
+          
+        </select></div>
+      </section>
+      <section class="pokeImgs">
+        <span class="PokeImgContainer">
+          <button onclick="OnPrevious" id="OnPrevious" ><img src="Images/left-arrow.png" alt="left"></button> 
+          <img src="" alt="img" id="ImagePokemon" />
+          <button onclick="OnNext()" id="OnNext" ><img src="Images/right-arrow.png" alt="right"></button> 
+        </span>
+      </section>
+      <section></section>
+      <section class="Abilites"></section>
+    </div>
+  </body>
+  <script src="PokemonId.js"></script>
 </html>
