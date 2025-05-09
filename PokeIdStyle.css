@@ -5,7 +5,7 @@
     --pokemon-background-color:rgb(74, 76, 74);
     --font : 'Irish Grover';
     --DisktopFontSize:24px;
-    --MobileFontSize:14px;
+    --MobileFontSize:10px;
     --box-background:rgb(12, 12, 12);
     --poke-btn-bg-color:blue;
     --poke-btn-text-color:#ffffff;
@@ -75,6 +75,17 @@ height:100%;
     color:white;
 
 }
+.forwardBtn{
+    position: sticky;
+   width: 50px;
+   height: 50px;
+ 
+   background: var(--pokemon-background-color);
+
+}
+.forwardBtn a img{
+width: 100%;
+}
 
 .container{
     display: grid;
@@ -89,7 +100,6 @@ height:100%;
     grid-row: 1/6;
     display: flex;
     border-radius: 14px;
-    flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
     background: var(--box-background);
@@ -133,7 +143,6 @@ height:100%;
     border-radius: 5px;
     color: var(--primary-color);
     border: none;
-    font-size: var(--DisktopFontSize);
          
 }
 .pokeDetails>div>select>option{
@@ -188,7 +197,6 @@ height:100%;
     border-radius: 20px;
 
     padding-left: 30px;
-    padding-bottom: 10px;
 }
 
 .PokeTypes h3{
@@ -266,7 +274,7 @@ height:100%;
 
 
     }
-    ..pokeDetails>div>select>option{
+    .pokeDetails>div>select>option{
         font-size: var(--MobileFontSize);
     }
     .PokeTypes{

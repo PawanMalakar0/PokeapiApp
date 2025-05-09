@@ -6,6 +6,8 @@
     --pokemon-background-color:green;
     --font : 'Irish Grover';
     --box-background:rgb(47,45,45);
+    --destopFonSize :24px;
+    --MobileFontSize :14px;
     --poke-btn-bg-color:blue;
     --poke-btn-text-color:#fff;
 }
@@ -20,11 +22,13 @@ body{
     width:100vw;
     height: 100vh;
 
+    overflow-x: hidden;
     background-color: var(--background-color);
 }
 .MainContainer{
     display: flex;
     flex-direction: column;
+    padding-left: 20px;
     gap:20px;
 }
 nav{
@@ -53,7 +57,7 @@ height:100px;
 
     border-radius: 8px;
     border: none;
-    font-size: 1rem;
+    font-size: var(--destopFonSize);
     color:var(--pokemon-theme-color);
     
 }
@@ -65,7 +69,7 @@ height:100px;
     padding:12px;
     text-align: center;
     color:var(--poke-btn-text-color);
-    font-size:20px;
+    font-size:var(--destopFonSize);
     background: var(--box-background);
     box-shadow:0 0 5px white ;
 }
@@ -73,7 +77,7 @@ height:100px;
 .pokemonSearch button{
     padding:10px 20px;
     background: var(--box-background);
-    font-size: 1.1rem;
+    font-size: var(--destopFonSize);
     border-radius: 15px;
     color:white;
 
@@ -93,7 +97,7 @@ height:100px;
 color:white;
 font-weight: 300;
 margin:5px 13px;
-font-size:24px;
+font-size:var(--destopFonSize);
 }
 .category .btns {
     display: grid;
@@ -101,15 +105,17 @@ font-size:24px;
     padding: 10px;
   }
 .btns button{
+    
 background-color:var(--pokemon-background-color);
-height: 40px;
-width: 120px;
+height: 80%;
+width:80%;
 margin-top: 4px;
 padding:5px 20px;
 border-radius: 10px;
 }
 .poke-cart{
-   display: flex;
+    display: flex;
+    align-items: center; 
    justify-content: flex-start;
     
     flex-wrap: wrap;
@@ -136,7 +142,7 @@ border-radius: 10px;
 
 }
 .cardImg img{
-    height: 150px;
+    height: 100%;
 }
 .poke-item .poke-disc{
     display: flex;
@@ -148,7 +154,7 @@ border-radius: 10px;
 }
 .card-item-btn{
     padding:10px 25px;
-    font-size: 1.1rem;
+    font-size: var(--destopFonSize);
     color: var(--poke-btn-text-color);
     background: var(--poke-btn-bg-color);
     margin-bottom: 5px;
@@ -166,7 +172,7 @@ border-radius: 10px;
     height: 30px;
     background: var(--box-background);
     color: var(--poke-btn-text-color);
-    font-size: 1rem;
+    font-size: var(--destopFonSize);
     border:none;
     border-radius: 5px;
     box-shadow: 0px 0px 3px inset ;
@@ -182,6 +188,11 @@ border-radius: 10px;
    .pokemonSearch input{
     width: 100%;
    }
+   .category h3{
+   
+
+font-size:var(--MobileFontSize);
+}
   .category{
     display: flex;
     width:60vw;
@@ -193,6 +204,13 @@ border-radius: 10px;
   .category .btns {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+
+  }
+  .card-item-btn{
+    font-size: var(--MobileFontSize);
+  }
+  .extractMore>button{
+    font-size: var(--MobileFontSize);
   }
  
   
