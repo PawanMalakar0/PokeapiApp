@@ -5,20 +5,51 @@ const OnPrevious = document.getElementById('OnPrevious');
 const OnNext = document.getElementById('OnNext');
 let id = params.get("id");
 let dataObj = {};
-console.log(id);
 
 if (id.startsWith("0")) {
   id = id.substring(1);
 }
+
+// chaging the container as pokemon type
+// pokemon VideoColorSpace
+const typeColors = {
+  grass: "#78C850",
+  fire: "#F08030",
+  water: "#6890F0",
+  bug: "#A8B820",
+  normal: "#A8A878",
+  poison: "#A040A0",
+  electric: "#F8D030",
+  ground: "#E0C068",
+  fairy: "#EE99AC",
+  psychic: "#F85888",
+  rock: "#B8A038",
+  ghost: "#705898",
+  ice: "#98D8D8",
+  dragon: "#7038F8",
+  fighting: "#C03028",
+  flying: "#A890F0",
+  steel: "#B8B8D0",
+  dark: "#705848",
+};
+
+
+const changeBgColor =(color)=>{
+
+  // document element Style will change Root Psudo class
+document.documentElement.style.setProperty('--pokemon-background-color',`${color}`) //it will change Document Root Properties 
+}
+
+
+
 OnNext.onclick=()=>{
   let PokeImage = document.getElementById("ImagePokemon"
   );
   
  let ImgUrl = PokeImage.src;
- console.log(ImgUrl)
   
  let spriteValues = Object.values(dataObj.sprites).filter(val => typeof val === "string" && val.startsWith("http"));
-   let findidx = Object.values(spriteValues).findIndex(k => k ===ImgUrl) +1// we used this is to find the current img in the display
+   let findidx = Object.values(spriteValues).findIndex(k => k ===ImgUrl) +1    // we used this is to find the current img in the display
   
    if(findidx >=spriteValues.length){
        findidx =0;
@@ -26,24 +57,23 @@ OnNext.onclick=()=>{
   let newIndex =  Object.values(spriteValues).at(findidx);
   PokeImage.src = `${newIndex}`
 }
+
+//for Previous the images
 OnPrevious.onclick=()=>{
 
   let PokeImage = document.getElementById("ImagePokemon"
   );
   
  let ImgUrl = PokeImage.src;
- console.log(ImgUrl)
  let spriteValues = Object.values(dataObj.sprites).filter(val => typeof val === "string" && val.startsWith("http"));
   
    let findidx = spriteValues.findIndex(k => k ===ImgUrl)-1 // we used this is to find the current 
    // img in the display
 
-   console.log(Object.keys(spriteValues).at(findidx-1))
    if(findidx <= 0){
     findidx =spriteValues.length-1;
 }
   let newIndex =  Object.values(spriteValues).at(findidx);
-  console.log(newIndex);
   PokeImage.src = `${newIndex}`
 }
 
@@ -56,8 +86,14 @@ const ExtractPokemon = async (idx) => {
   try {
      dataObj = await Promise.all(promise);
      dataObj ={...dataObj[0]};
-     console.log(dataObj);
+     console.log({...dataObj})
+     const BgColor =typeColors[dataObj.types[0].type.name]
+     const PokeType =  dataObj.types
+     const PokeStats = dataObj.stats
+     changeBgColor(BgColor)
      displayPokemonData(dataObj);
+     getPokeActivites(PokeType);
+     getStatsList(PokeStats)
 
   } catch (e) {
     console.error("Failed to fetch Pokémon data:-", e);
@@ -81,11 +117,8 @@ ExtractPokemon(id);
 
 PokeExperince.innerHTML =`${dataObj.base_experience}`;
 PokeHeight.innerHTML = `${dataObj.height}`
-console.log(PokeHeight);
 PokeWeight.innerHTML = `${dataObj.weight}`
-console.log(PokeWeight);
 PokeName.innerHTML = `${dataObj.name}`
-console.log(PokeName);
 PokeId.innerHTML = `${dataObj.id}`
 PokeImage.src = `${dataObj.sprites.front_default}`
 
@@ -100,6 +133,37 @@ for(let i =0 ;i< dataObj.moves.length ;i++){
   PokeMoves.appendChild(PokeOption)
 }
  
+ }
+ //Type of Pokemon is displayed
+ function getPokeActivites(TypeArr) {
+const TypeList = document.getElementById('TypeList');
+for(const key in TypeArr) {
+  
+    const slot = TypeArr[key].slot;
+    const element = TypeArr[key].type.name;
+    console.log(element)
+    let li = document.createElement('li');
+    li.className ='listItem';
+    li.id = `${slot}`
+    li.textContent = `${element}`
+    TypeList.appendChild(li)
+}
+ }
+
+ const getStatsList =(StatsArr) =>{
+  const StatList = document.getElementById('statsList');
+console.log(StatsArr);
+for (const key in StatsArr) {
+
+  
+     const li = document.createElement('li');
+     
+    li.textContent = `${StatsArr[key].stat.name}`
+    li.id = `${key}`
+    li.className = `StatList`;
+  console.log(li)
+  StatList.appendChild(li)
+}
  }
 
 
